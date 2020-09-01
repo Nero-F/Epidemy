@@ -90,6 +90,7 @@ const getEvents = async (accessToken) => {
 
     return events;
 };
+
 module.exports = {
     getUserDetails,
     getEvents,

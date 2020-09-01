@@ -8,8 +8,6 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const flash = require('connect-flash');
 
-//const mongoose = require('mongoose').connect(process.env.MONGO_URL);
-
 // routers
 const authRouter = require('./routes/auth');
 const calendarRouter = require('./routes/calendar');
@@ -123,7 +121,7 @@ hbs.registerHelper('eventDateTime', (dateTime) => {
     return moment(dateTime).format('M/D/YY h:mm A');
 });
 
-// middleware
+// middlewares
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -160,6 +158,6 @@ app.use((err, req, res, next) => {
     res.render('error');
 });
 
-app.listen(PORT, () => console.log(`Listening on http://localhost:${PORT} !!`));
+const discord_client = require('./discord-bot/bot');
 
-module.exports = app;
+app.listen(PORT, () => console.log(`Listening on http://localhost:${PORT} !!`));

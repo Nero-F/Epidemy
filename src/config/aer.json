@@ -1,0 +1,58 @@
+{
+    "AER": [
+        {
+            "name": "F",
+            "mail": "fahad.assoumani@epitech.eu",
+            "skills": ["C", "C++", "C#", "Python", "NodeJS", "Angular", "CI/CD", "Docker", "Git/GitHub"],
+            "promo": "Tek2"
+        },
+        {
+            "name": "Mathias", 
+            "mail": "mathias.vigier@epitech.eu",
+            "skills": ["C", "C++", "C#", "Python", "NodeJS", "Angular", "CI/CD", "Docker", "Git/GitHub"],
+            "promo": "Tek2"
+        },
+        {
+            "name": "Adrien", 
+            "mail": "adrien.lucbert@epitech.eu",
+            "skills": ["C", "C++", "C#", "Python", "NodeJS", "Angular", "CI/CD", "Docker", "Git/GitHub"],
+            "promo": "Tek2"
+        },
+        {
+            "name": "Albert", 
+            "mail": "alber.corson@epitech.eu",
+            "skills": ["C", "C++", "C#", "Python", "NodeJS", "Angular", "CI/CD", "Docker", "Git/GitHub"],
+            "promo": "Tek2"
+        },
+        {
+            "name": "Maïlys", 
+            "mail": "mailys.perez@epitech.eu",
+            "skills": ["C", "C++", "C#", "Python", "NodeJS", "Angular", "CI/CD", "Docker", "Git/GitHub"],
+            "promo": "Tek2"
+        },
+        {
+            "name": "Nathan", 
+            "mail": "Nathan.Moignard@epitech.eu",
+            "skills": ["C", "C++", "C#", "Python", "NodeJS", "Angular", "CI/CD", "Docker", "Git/GitHub"],
+            "promo": "Tek2"
+        },
+        {
+            "name": "Gaetan", 
+            "mail": "gaetan.morvan@epitech.eu",
+            "skills": ["C", "C++", "C#", "Python", "NodeJS", "Angular", "CI/CD", "Docker", "Git/GitHub"],
+            "promo": "Tek2"
+        },
+        {
+            "name": "Troncy", 
+            "mail": "lucas.troncy@epitech.eu",
+            "skills": ["C", "C++", "C#", "Python", "NodeJS", "Angular", "CI/CD", "Docker", "Git/GitHub"],
+            "promo": "Tek5"
+        },
+        {
+            "name": "Poc", 
+            "mail": "clement.peau@epitech.eu",
+            "skills": ["C", "C++", "C#", "Python", "NodeJS", "Angular", "CI/CD", "Docker", "Git/GitHub"],
+            "promo": "Tek5"
+        }
+    ]
+}
