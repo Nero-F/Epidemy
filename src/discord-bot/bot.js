@@ -21,9 +21,12 @@ const prefix = 'aer!';
 const SERV_ID = '438095103060344843'
 const CHAN_ID = '691671860148174898';
 
+client.on('unhandledRejection', error => {
+    console.error('Unhandled promise Rejection', error);
+});
+
 
 client.once('ready', () => console.log('Bot Is Ready'))
-
 client.on('message', message => {
     if (message.guild.id !== SERV_ID || message.channel.id !== CHAN_ID) return;
     msg_content = message.content;

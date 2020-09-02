@@ -1,26 +1,42 @@
 const aer = require('../../aer');
 const {MessageEmbed} = require('discord.js');
 
+const displayList = (promotion, list, message) => { 
+    const desc = list.join('\n');
+    const end = promotion === undefined ? 'AERs' : `${promotion}'s AERs`
+    
+    const embed = new MessageEmbed()
+        .setTitle(`List Of Your Very Talentuous ${end}`)
+        .setColor(0xE37A16)
+        .setDescription(desc);
+    message.channel.send(embed);
+};
+
 module.exports = {
     name: 'list',
     description: 'List all AERs in the server!',
     execute(message, args) {
+        const option = args.shift();
         let list = [];
-        let desc = ""
 
-        if (args.length != 0) {
-            message.reply('This command does not need arguments.');
-            return;
+        let fctPointer = {
+            'promo' : aer.getAERNameListFromPromotion,
+            'skill': () => { console.log('skills') } // TODO: make the skill function in aer.js
+        };
+        if (option === undefined) {
+            list = aer.getAERNameList()
+            displayList(undefined, list, message);
+            return
         }
-        list = aer.getAERNameList()
-        desc = list.join('\n');
-        console.log(desc);
-        
-        const embed = new MessageEmbed()
-            .setTitle('List Of Your Very Talentuous AERs')
-            .setColor(0xE37A16)
-            .setDescription(desc);
-        
-        message.channel.send(embed);
+
+        if (option.startsWith('--')) {
+            const key = option.slice(2);
+            if (key in fctPointer)
+                list = fctPointer[key](message, args.join(' '));
+            else
+                message.channel.send('This command does not exist, please refer to the help command.');
+            displayList(args[1], list, message);
+        } else message.channel.send('command error see help for mor informations.');
+
     },
 };

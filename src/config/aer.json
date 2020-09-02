@@ -4,43 +4,43 @@
             "name": "F",
             "mail": "fahad.assoumani@epitech.eu",
             "skills": ["C", "C++", "C#", "Python", "NodeJS", "Angular", "CI/CD", "Docker", "Git/GitHub"],
-            "promo": "Tek2"
+            "promo": "tek3"
         },
         {
             "name": "Mathias", 
             "mail": "mathias.vigier@epitech.eu",
             "skills": ["C", "C++", "C#", "Python", "NodeJS", "Angular", "CI/CD", "Docker", "Git/GitHub"],
-            "promo": "Tek2"
+            "promo": "tek3"
         },
         {
             "name": "Adrien", 
             "mail": "adrien.lucbert@epitech.eu",
             "skills": ["C", "C++", "C#", "Python", "NodeJS", "Angular", "CI/CD", "Docker", "Git/GitHub"],
-            "promo": "Tek2"
+            "promo": "tek3"
         },
         {
             "name": "Albert", 
             "mail": "alber.corson@epitech.eu",
             "skills": ["C", "C++", "C#", "Python", "NodeJS", "Angular", "CI/CD", "Docker", "Git/GitHub"],
-            "promo": "Tek2"
+            "promo": "tek3"
         },
         {
             "name": "Maïlys", 
             "mail": "mailys.perez@epitech.eu",
             "skills": ["C", "C++", "C#", "Python", "NodeJS", "Angular", "CI/CD", "Docker", "Git/GitHub"],
-            "promo": "Tek2"
+            "promo": "tek3"
         },
         {
             "name": "Nathan", 
             "mail": "Nathan.Moignard@epitech.eu",
             "skills": ["C", "C++", "C#", "Python", "NodeJS", "Angular", "CI/CD", "Docker", "Git/GitHub"],
-            "promo": "Tek2"
+            "promo": "tek3"
         },
         {
             "name": "Gaetan", 
             "mail": "gaetan.morvan@epitech.eu",
             "skills": ["C", "C++", "C#", "Python", "NodeJS", "Angular", "CI/CD", "Docker", "Git/GitHub"],
-            "promo": "Tek2"
+            "promo": "tek3"
         },
         {
             "name": "Troncy", 
