@@ -21,7 +21,7 @@ module.exports = {
 
         let fctPointer = {
             'promo' : aer.getAERNameListFromPromotion,
-            'skill': () => { console.log('skills') } // TODO: make the skill function in aer.js
+            'skill': aer.getAERNameListFromSkill
         };
         if (option === undefined) {
             list = aer.getAERNameList()
@@ -35,8 +35,8 @@ module.exports = {
                 list = fctPointer[key](message, args.join(' '));
             else
                 message.channel.send('This command does not exist, please refer to the help command.');
-            displayList(args[1], list, message);
+            if (list !== null)
+                displayList(args[1], list, message);
         } else message.channel.send('command error see help for mor informations.');
-
     },
 };

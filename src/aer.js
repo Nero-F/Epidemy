@@ -1,7 +1,29 @@
 const aers = require('./config/aer.json');
 
+// TODO: Write somewhere every skills vailiable to propose when skills is not found 
+const getAERNameListFromSkill = (message, skill) => {
+    const nameList = [];
+
+
+    aers.AER.forEach(aer => {
+        let buffer = aer.skills.map(elem => elem.toLowerCase());
+
+        buffer.forEach(_ => {
+            if (skill.trim().toLowerCase() === _) {
+                nameList.push(`${aer.name} ---> ${aer.promo} ---> ${aer.mail}`);
+            }
+        });
+    });
+
+    if (nameList.length == 0) {
+        message.channel.send("Error: Either the skill does not exist or we don't have that compentence sorry :(.");
+        return null; 
+    }
+    return nameList;
+}
+
 const getAERNameList = () => {
-    const nameList = []
+    const nameList = [];
 
     aers.AER.forEach( aer => {
         nameList.push(`${aer.name} ---> ${aer.promo} ---> ${aer.mail}`);
@@ -22,11 +44,11 @@ const getAERNameListFromPromotion = (message, promotion) => {
             nameList.push(`${aer.name} ---> ${aer.mail}`);
         }
     });
-    console.log(nameList);
     return nameList;
 };
 
 module.exports = {
     getAERNameList,
-    getAERNameListFromPromotion
+    getAERNameListFromPromotion,
+    getAERNameListFromSkill 
 };
