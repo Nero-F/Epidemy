@@ -3,7 +3,7 @@ const {MessageEmbed} = require('discord.js');
 
 const displayList = (promotion, list, message) => { 
     const desc = list.join('\n');
-    const end = promotion === undefined ? 'AERs' : `${promotion}'s AERs`
+    const end = promotion === undefined ? 'AERs' : `${promotion}'s AERs`;
     
     const embed = new MessageEmbed()
         .setTitle(`List Of Your Very Talentuous ${end}`)
