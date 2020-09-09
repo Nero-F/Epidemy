@@ -1,10 +1,12 @@
 require('dotenv').config();
+require('./cache/mongo');
 const path = require('path');
 const createError = require('http-errors');
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const session = require('express-session');
+const mongoose = require('mongoose');
 const MongoStore = require('connect-mongo')(session);
 const flash = require('connect-flash');
 
@@ -41,11 +43,9 @@ const configuration = {
         authorizePath: process.env.OAUTH_AUTHORIZE_ENDPOINT,
         tokenPath: process.env.OAUTH_TOKEN_ENDPOINT
     }
-}
+};
 
 const oauth2 = require('simple-oauth2').create(configuration);
-
-const fs = require('fs');
 
 const signInComplete = async (iss, sub, profile, accessToken, refreshToken, params, done) => {
     if (!profile.oid)
@@ -58,15 +58,9 @@ const signInComplete = async (iss, sub, profile, accessToken, refreshToken, para
         return done(err);
     }
     let oauthToken = oauth2.accessToken.create(params);
-    const cache_file = path.join(__dirname, './cache/tokens.json');
     global.token = oauthToken;
 
-
     users[profile.oid] = { profile, oauthToken };
-    if (!fs.existsSync(cache_file)) { // TODO: Maybe write in redis
-       let to_write_buffer = JSON.stringify(oauthToken);
-        fs.writeFileSync(cache_file, to_write_buffer);
-    }
     return done(null, users[profile.oid]);
 }
 
@@ -86,10 +80,13 @@ passport.use(new OIDCStrategy(
       signInComplete
 ));
 
+const connection = mongoose.connection;
+
 app.use(session({
     secret: process.env.SESSION_SECRET,
     store: new MongoStore({
-        url: process.env.MONGO_URL,
+        mongooseConnection: connection,
+        // url: process.env.MONGO_URL,
         autoRemove: 'native'
     }),
     resave: false,

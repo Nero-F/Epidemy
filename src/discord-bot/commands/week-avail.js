@@ -2,8 +2,27 @@ const calendarService = require('../../graph'); // TODO: change this
 const tokens = require('../../tokens');
 const aers = require('../../config/aer.json')
 const { MessageEmbed } = require('discord.js');
+const mongoose = require('mongoose');
 
 const moment = require('moment');
+
+const instance = mongoose.connection;
+const collection = instance.collection('sessions');
+
+
+// TODO: maybe move this function to token.js
+const retrieveTokenFromDb = async () => {
+    try {
+       const buffer = await collection.find().sort({ _id: 1 }).limit(1).toArray();
+
+        const obj = JSON.parse(buffer[0].session);
+        const token = obj.passport.user.oauthToken.token.access_token;
+
+        return token;
+    } catch (err) {
+        console.error(err);
+    }
+};
 
 const serializeResponse = (response) => {
     let arr = [];
@@ -22,61 +41,79 @@ const serializeResponse = (response) => {
 };
 
 const printLineBorders = (paddings, namePadder = true) => {
+    let str = "";
     for (let i = 0; i != paddings.length; i++) {
+        str += '+';
         process.stdout.write('+');
         for (let y = 0 ; y <= paddings[i] ; y++) {
+            str += !namePadder && i == 0 ? ' ' : '-';
             process.stdout.write(!namePadder && i == 0 ? ' ' : '-');
         }
 
     }
+    str += '+\n';
     process.stdout.write('+');
     process.stdout.write('\n');
+    return str;
 }
 
 const printInValue = (values, paddings) => {
     let name_temp = "";
     let namePadder = true;
     let count = 0;
+    let str = "";
 
     values.forEach(aer => {
+        str += '|';
         process.stdout.write('|');
         if (name_temp != aer.name) {
+            str += aer.name;
             process.stdout.write(aer.name);
             name_temp = aer.name;
             for (let i = aer.name.length; i <= paddings[0]; i++) {
+                str += ' ';
                 process.stdout.write(' ');
             }
             namePadder = true;
         } else {
             for (let i = 0; i != paddings[0]+ 1; i++) {
+                str += ' ';
                 process.stdout.write(' ');
             }
             namePadder = false;
         }
+        str += '|' + aer.activity;
         process.stdout.write('|');
         process.stdout.write(aer.activity);
         for (let i = aer.activity.length; i <= paddings[1]; i++) {
+            str += ' ';
             process.stdout.write(' ');
         }
+        str += '|' + aer.date;
         process.stdout.write('|');
         process.stdout.write(aer.date);
         for (let i = aer.date.length; i <= paddings[2]; i++) {
+            str += ' ';
             process.stdout.write(' ');
         }
+        str += '|\n';
         process.stdout.write('|');
         process.stdout.write('\n');
         if (count == values.length - 1)
             namePadder = true;
-        printLineBorders(paddings, namePadder);
+        str += printLineBorders(paddings, namePadder);
         count++;
     });
+    str += '\n';
     process.stdout.write('\n');
+    return str;
 };
 
 const adaptiveTable = (object) => {
     let padName = 0;
     let padActivity = 0;
     let padTime = 0;
+    let result = "";
 
     object.forEach(aer => {
         if (aer.name.length > padName)
@@ -87,9 +124,11 @@ const adaptiveTable = (object) => {
             padTime = aer.date.length;
     });
     padTab = [padName, padActivity, padTime]
-    printLineBorders(padTab);
-    printInValue(object, padTab);
-}
+    result += printLineBorders(padTab);
+    result += printInValue(object, padTab);
+    result = '```\n' + result + '\n```';
+    return result;
+};
 
 module.exports = {
     name: 'week-avail',
@@ -108,21 +147,21 @@ module.exports = {
             message.reply(`Nobody has the name ${name} please retry with a correct name (see: list<command>)`);
             return;
         }
-        tokens.getAccessTokenBot(global.token).then(token => {
+
+        retrieveTokenFromDb().then(token => {
             calendarService.getWeekAERAvailiabityByName(token, 'F').then((res) => {
                 if (res.length == 0) {
                     message.channel.send(`${name} has no Event assigned this week...`);
                     return;
                 }
                 const aerTimeSheet = serializeResponse(res);
-                adaptiveTable(aerTimeSheet);
+                const table = adaptiveTable(aerTimeSheet);
 
-                let desc = res.join('\n');
                 const embed = new MessageEmbed()
                     .setTitle('Availiability')
                     .setColor(0xE37A16)
-                    .setDescription(desc)
-                message.channel.send('foo');
+                    .setDescription(table);
+                message.channel.send(embed);
             }).catch(err => {
                 console.error(err);
                 message.channel.send('The server is not running...');

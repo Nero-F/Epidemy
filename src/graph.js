@@ -50,6 +50,8 @@ const getWeekAERAvailiabityByName = async (accessToken, name) => {
     const buffer = date.getDate() - (date.getDay() - 1) + 6;
     const last_day = new Date(date.setDate(buffer)).toISOString();
     const client = getAuthenticatedClient(accessToken);
+
+    // Check the good url endpoint
     console.log(`/me/calendars/${process.env.ID_AER_CALENDAR}/calendarView?startDateTime=${today}&endDateTime=${last_day}`);
 
     try {

@@ -1,9 +1,8 @@
+const mongoose = require('mongoose');
 module.exports = {
     getAccessToken: async (req) => {
         if (req.user) {
             let storedToken = req.user.oauthToken;
-            console.log(`tyyyyppeee =========+> `)
-            console.log(typeof(storedToken));
             if (storedToken) {
                 if (storedToken.expired()) {
                     // refresh token
@@ -18,16 +17,12 @@ module.exports = {
         }
     },
     getAccessTokenBot: async (oauthToken) => {
-        console.log("foo");
         let storedToken = oauthToken;
         if (storedToken) {
-            console.log("bar");
             if (storedToken.expired()) {
-                console.log("gar");
                 let newToken = await storedToken.refresh();
                 return newToken.token.access_token;
             }
-            console.log("dar");
             return storedToken.token.access_token;
         }
     }
