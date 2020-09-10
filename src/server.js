@@ -26,7 +26,7 @@ passport.serializeUser((user, done) => {
     done(null, user);
 });
 
-passport.deserializeUser(async (/*id*/user, done) => {
+passport.deserializeUser(async (user, done) => {
     done(null, user);
 });
 
@@ -86,7 +86,6 @@ app.use(session({
     secret: process.env.SESSION_SECRET,
     store: new MongoStore({
         mongooseConnection: connection,
-        // url: process.env.MONGO_URL,
         autoRemove: 'native'
     }),
     resave: false,

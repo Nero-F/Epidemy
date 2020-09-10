@@ -13,9 +13,9 @@ const collection = instance.collection('sessions');
 // TODO: maybe move this function to token.js
 const retrieveTokenFromDb = async () => {
     try {
-       const buffer = await collection.find().sort({ _id: 1 }).limit(1).toArray();
-
+        const buffer = await collection.find({}).sort({ field: 'asc', _id: -1 }).limit(1).toArray();
         const obj = JSON.parse(buffer[0].session);
+        console.log(obj);
         const token = obj.passport.user.oauthToken.token.access_token;
 
         return token;
@@ -135,20 +135,29 @@ module.exports = {
     description: 'Check the availiability of an AER in the current Week',
     execute(message, args) {
         let exist = false;
+        let validation_table = []; // Only purpose is to check wether the name exist without blocking the the command
 
-        if (args.length != 1) return;
-        const name = args.shift();
-
-        aers.AER.forEach(aer => {
-            if (aer.name.toLowerCase() === name.toLowerCase())
-                exist = true;
+        console.log(args);
+        args.forEach(name => {
+            aers.AER.forEach(aer => {
+                console.log(aer.name);
+                if (name.toLowerCase() === aer.name.toLowerCase())
+                    validation_table.push({[ name.toLowerCase() ]: true });
+            });
+            if (!name.toLowerCase() in validation_table.keys())
+                validation_table.push({[ name.toLowerCase() ]: false });
         });
-        if (exist == false) {
-            message.reply(`Nobody has the name ${name} please retry with a correct name (see: list<command>)`);
-            return;
-        }
+
+
+        //if (exist == false)
+            //message.reply(`Nobody has the name ${name} please retry with a correct name (see: list<command>)`);
 
         retrieveTokenFromDb().then(token => {
+            console.log('==+>');
+            console.log(token);
+            validation_table.forEach(name => {
+                console.log(name);
+            });
             calendarService.getWeekAERAvailiabityByName(token, 'F').then((res) => {
                 if (res.length == 0) {
                     message.channel.send(`${name} has no Event assigned this week...`);
