@@ -1,28 +1,8 @@
-const calendarService = require('../../graph'); // TODO: change this
-const tokens = require('../../tokens');
+const tokensFunc = require('../../tokens');
+const calendarService = require('../../graph');
 const aers = require('../../config/aer.json')
 const { MessageEmbed } = require('discord.js');
-const mongoose = require('mongoose');
-
 const moment = require('moment');
-
-const instance = mongoose.connection;
-const collection = instance.collection('sessions');
-
-
-// TODO: maybe move this function to token.js
-const retrieveTokenFromDb = async () => {
-    try {
-        const buffer = await collection.find({}).sort({ field: 'asc', _id: -1 }).limit(1).toArray();
-        const obj = JSON.parse(buffer[0].session);
-        console.log(obj);
-        const token = obj.passport.user.oauthToken.token.access_token;
-
-        return token;
-    } catch (err) {
-        console.error(err);
-    }
-};
 
 const serializeResponse = (response) => {
     let arr = [];
@@ -49,7 +29,6 @@ const printLineBorders = (paddings, namePadder = true) => {
             str += !namePadder && i == 0 ? ' ' : '-';
             process.stdout.write(!namePadder && i == 0 ? ' ' : '-');
         }
-
     }
     str += '+\n';
     process.stdout.write('+');
@@ -57,6 +36,7 @@ const printLineBorders = (paddings, namePadder = true) => {
     return str;
 }
 
+// TODO: refacto to make it more generic and more readable
 const printInValue = (values, paddings) => {
     let name_temp = "";
     let namePadder = true;
@@ -134,47 +114,48 @@ module.exports = {
     name: 'week-avail',
     description: 'Check the availiability of an AER in the current Week',
     execute(message, args) {
-        let exist = false;
         let validation_table = []; // Only purpose is to check wether the name exist without blocking the the command
 
+        console.log("args");
         console.log(args);
-        args.forEach(name => {
-            aers.AER.forEach(aer => {
-                console.log(aer.name);
-                if (name.toLowerCase() === aer.name.toLowerCase())
-                    validation_table.push({[ name.toLowerCase() ]: true });
+        if (args.length > 0) {
+            args.forEach(name => {
+                aers.AER.forEach(aer => {
+                    console.log(aer.name);
+                    if (name.toLowerCase() === aer.name.toLowerCase())
+                        validation_table.push(name.toLowerCase());
+                });
+                if (!validation_table.includes(name.toLowerCase()))
+                    message.reply(`Nobody has the name ${name} please retry with a correct name (see: list<command>)`);
             });
-            if (!name.toLowerCase() in validation_table.keys())
-                validation_table.push({[ name.toLowerCase() ]: false });
-        });
+            if (validation_table.length === 0) return;
+        } else {
+            message.reply(`This commands should have at least one argument`);
+            return;
+        }
 
-
-        //if (exist == false)
-            //message.reply(`Nobody has the name ${name} please retry with a correct name (see: list<command>)`);
-
-        retrieveTokenFromDb().then(token => {
-            console.log('==+>');
-            console.log(token);
+        tokensFunc.retrieveTokenFromDb().then(token => {
             validation_table.forEach(name => {
+                console.log('----------------------------');
                 console.log(name);
-            });
-            calendarService.getWeekAERAvailiabityByName(token, 'F').then((res) => {
-                if (res.length == 0) {
-                    message.channel.send(`${name} has no Event assigned this week...`);
-                    return;
-                }
-                const aerTimeSheet = serializeResponse(res);
-                const table = adaptiveTable(aerTimeSheet);
+                calendarService.getWeekAERAvailiabityByName(token, name).then((res) => {
+                    if (res.length == 0) {
+                        message.channel.send(`${name} has no Event assigned this week...`);
+                        return;
+                    }
+                    const aerTimeSheet = serializeResponse(res);
+                    const table = adaptiveTable(aerTimeSheet);
 
-                const embed = new MessageEmbed()
-                    .setTitle('Availiability')
-                    .setColor(0xE37A16)
-                    .setDescription(table);
-                message.channel.send(embed);
-            }).catch(err => {
-                console.error(err);
-                message.channel.send('The server is not running...');
-            });
-        }).catch(err => console.error(err));
+                    const embed = new MessageEmbed()
+                        .setTitle(`Availiability: ${name}`)
+                        .setColor(0xE37A16)
+                        .setDescription(table);
+                    message.channel.send(embed);
+                }).catch(err => {
+                    console.error(err);
+                    message.channel.send('The server is not running...');
+                });
+            }).catch(error => console.error(error));
+        });
     },
 };
