@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@microsoft/microsoft-graph-client": "^2.0.0",
+    "@types/async-redis": "^1.1.1",
+    "async-redis": "^1.1.7",
     "bluebird": "^3.7.2",
     "connect-flash": "^0.1.1",
     "connect-mongo": "^3.2.0",
@@ -24,7 +26,7 @@
     "global-request-context": "^0.4.0",
     "hbs": "^4.1.1",
     "http-errors": "^1.7.3",
-    "isomorphic-fetch": "^2.2.1",
+    "isomorphic-fetch": "^3.0.0",
     "moment": "^2.25.3",
     "mongoose": "^5.10.3",
     "morgan": "^1.10.0",

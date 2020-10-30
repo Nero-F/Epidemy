@@ -6,9 +6,10 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const session = require('express-session');
-const mongoose = require('mongoose');
-const MongoStore = require('connect-mongo')(session);
 const flash = require('connect-flash');
+
+const redis = require('redis');
+const RedisStore = require('connect-redis')(session);
 
 // routers
 const authRouter = require('./routes/auth');
@@ -26,7 +27,7 @@ passport.serializeUser((user, done) => {
     done(null, user);
 });
 
-passport.deserializeUser(async (/*id*/user, done) => {
+passport.deserializeUser(async (user, done) => {
     done(null, user);
 });
 
@@ -46,6 +47,11 @@ const configuration = {
 };
 
 const oauth2 = require('simple-oauth2').create(configuration);
+console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+console.log(oauth2);
+console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+
+global.o2G = oauth2;
 
 const signInComplete = async (iss, sub, profile, accessToken, refreshToken, params, done) => {
     if (!profile.oid)
@@ -80,16 +86,19 @@ passport.use(new OIDCStrategy(
       signInComplete
 ));
 
-const connection = mongoose.connection;
+//const connection = mongoose.connection;
+
+const redis_client = require('./cache/redis_cache').client;
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
-    store: new MongoStore({
-        mongooseConnection: connection,
-        // url: process.env.MONGO_URL,
-        autoRemove: 'native'
+    store: new RedisStore({
+        host: 'localhost',
+        port: 1111, 
+        client: redis_client,
+        prefix: 'sesh'
     }),
-    resave: false,
+    resave: true,
     saveUninitialized: false,
     unset: 'destroy',
 }));
@@ -138,6 +147,7 @@ app.get('/', (req, res, next) => {
     let params = { active: { home: true } };
     res.render('index', params);
 });
+
 app.use('/auth', authRouter);
 app.use('/calendar', calendarRouter);
 

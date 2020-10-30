@@ -1,7 +1,5 @@
-// Copyright (c) Microsoft Corporation.
-// Licensed under the MIT License.
-
 require('dotenv').config();
+
 const graph = require('@microsoft/microsoft-graph-client');
 require('isomorphic-fetch');
 
@@ -56,7 +54,7 @@ const getWeekAERAvailiabityByName = async (accessToken, name) => {
 
     try {
         // TODO: check the category maybe
-        let response = await client.api(`/me/calendars/${process.env.ID_AER_CALENDAR}/calendarView?startDateTime=${today}&endDateTime=${last_day}`)
+        const response = await client.api(`/me/calendars/${process.env.ID_AER_CALENDAR}/calendarView?startDateTime=${today}&endDateTime=${last_day}`)
             .select('subject,start,end')
             .get();
         let retValue = [];
@@ -99,4 +97,3 @@ module.exports = {
     getWeekAERAvailiabityByName,
     getAERTimeSheet
 };
-
