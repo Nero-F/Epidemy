@@ -2,7 +2,6 @@ const fs = require('fs');
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
-/* Discord commands loading */
 client.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync(__dirname + '/commands').filter(file => file.endsWith('.js'));
 
@@ -12,8 +11,6 @@ for (const file of commandFiles) {
 }
 
 const BOT_TOKEN = process.env.BOT_TOKEN;
-
-//TODO: Change this to env variables 
 const prefix = process.env.DISCORD_PREFIX;
 const SERV_ID = process.env.DISCORD_SERV_ID;
 const CHAN_ID = process.env.DISCORD_CHAN_ID;
@@ -21,7 +18,12 @@ const CHAN_ID = process.env.DISCORD_CHAN_ID;
 
 client.once('ready', () => console.log('Bot Is Ready'));
 client.on('message', message => {
-    if (message.guild.id !== SERV_ID || message.channel.id !== CHAN_ID) return;
+    console.log(message);
+    if (message.guild == undefined || 
+        message.guild.id !== SERV_ID || message.channel.id !== CHAN_ID) {
+        message.author.send(`You can only call me in this specific channel ${CHAN_ID}...`);
+        return;
+    }
     msg_content = message.content;
     
     if (!msg_content.startsWith(prefix) || message.author.bot) return;
