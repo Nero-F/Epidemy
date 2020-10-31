@@ -1,5 +1,4 @@
 require('dotenv').config();
-require('./cache/mongo');
 const path = require('path');
 const createError = require('http-errors');
 const express = require('express');
@@ -47,9 +46,6 @@ const configuration = {
 };
 
 const oauth2 = require('simple-oauth2').create(configuration);
-console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-console.log(oauth2);
-console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
 global.o2G = oauth2;
 
@@ -86,15 +82,11 @@ passport.use(new OIDCStrategy(
       signInComplete
 ));
 
-//const connection = mongoose.connection;
-
 const redis_client = require('./cache/redis_cache').client;
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
     store: new RedisStore({
-        host: 'localhost',
-        port: 1111, 
         client: redis_client,
         prefix: 'sesh'
     }),
