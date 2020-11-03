@@ -5,8 +5,8 @@
             "mail": "fahad.assoumani@epitech.eu",
             "skills": ["C", "C++", "C#", "Python", "NodeJS", "Angular", "CI/CD", "Docker", "Git/GitHub"],
             "promo": "tek3",
-            "image": "https://avatars2.githubusercontent.com/u/43915420?s=400&u=a06b641152b14cb5b32ca256bf8380a1e5f6352c&v=4",
-            "presentation": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            "image": "https://pbs.twimg.com/profile_images/1299173799678676993/2KMg3Lzd_400x400.jpg",
+            "presentation": "C'est Marseille BB"
         },
         {
             "name": "Mathieu", 
@@ -19,18 +19,18 @@
         {
             "name": "Adrien", 
             "mail": "adrien.lucbert@epitech.eu",
-            "skills": ["C", "C++", "C#", "Python", "NodeJS", "Angular", "CI/CD", "Docker", "Git/GitHub"],
+            "skills": ["C", "C++", "Web (JS, VueJS, PHP, NodeJS, SQL, MongoDB, ...)", "Linux/Vim", "Optimisation", "Git/GitHub"],
             "promo": "tek3",
-            "image": "",
-            "presentation": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            "image": "https://media.discordapp.net/attachments/688768956823109662/772953386953211934/DSC_0149.JPG?width=970&height=644",
+            "presentation": "Connaître un langage c'est pas seulement apprendre à s'en servir, c'est surtout apprendre comment il fonctionne, explorer ses subtilités, pour mieux s'en servir. J'aime le bas niveau et l'optimisation ; je préfère décortiquer et comprendre plutôt qu'avoir tout de déjà fait pour moi. Si vous voulez apprendre, je peux faire des heures sup avec plaisir pour vous partager le plus de connaissances possible. Aussi grand passionné de vélo (enduro/dh/fixie) et nouvellement d'escalade, c'est là que je préfère passer mon temps quand je ne code pas."
 
         },
         {
             "name": "Albert", 
             "mail": "alber.corson@epitech.eu",
-            "skills": ["C", "C++", "C#", "Python", "NodeJS", "Angular", "CI/CD", "Docker", "Git/GitHub"],
+            "skills": ["C", "C++", "Python", "Kotlin", "CI/CD", "Docker", "Git/GitHub"],
             "promo": "tek3",
-            "image": "",
+            "image": "https://media.discordapp.net/attachments/770048602474020884/772939565023100928/temp_profile_image4626493787076577799.jpg?width=644&height=644",
             "presentation": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
         },
         {
@@ -65,7 +65,7 @@
             "mail": "louis.viot@epitech.eu",
             "skills": ["C", "C++", "C#", "Python", "NodeJS", "Angular", "CI/CD", "Docker", "Git/GitHub"],
             "promo": "Tek5",
-            "image": "",
+            "image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.linkedin.com%2Fpub%2Fdir%2FLouis%2FViot%3Ftrk%3Dpublic_profile_samename_see_all&psig=AOvVaw3XtwfvdFImb9bOrn6kMu6c&ust=1604439828575000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCIiFv6Lq5OwCFQAAAAAdAAAAABAD",
             "presentation": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
         }
     ]
