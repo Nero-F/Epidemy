@@ -42,6 +42,24 @@ const getTimeObjFromDateTimes = (start, end) => {
     };
 }
 
+const getAllDataSet = async (linkToNextSet, client) => {
+    let buffer = [];
+
+    if (linkToNextSet.length === 0)
+        return;
+    try {
+        const response = await client.api(linkToNextSet)
+            .get();
+        buffer = response.value;
+        const nextLink = response['@odata.nextLink'];
+
+        if (nextLink !== undefined) return buffer.concat(await getAllDataSet(nextLink, client));
+        return buffer;
+    } catch (err) {
+        console.error(err);
+    }
+}
+
 const getWeekAERAvailiabityByName = async (accessToken, name) => {
     const date = new Date();
     const today = date.toISOString();
@@ -53,13 +71,13 @@ const getWeekAERAvailiabityByName = async (accessToken, name) => {
     console.log(`/me/calendars/${process.env.ID_AER_CALENDAR}/calendarView?startDateTime=${today}&endDateTime=${last_day}`);
 
     try {
-        // TODO: check the category maybe
         const response = await client.api(`/me/calendars/${process.env.ID_AER_CALENDAR}/calendarView?startDateTime=${today}&endDateTime=${last_day}`)
             .select('subject,start,end')
             .get();
         let retValue = [];
-
-        response.value.forEach(elem => {
+        let clear = response.value;
+        clear = clear.concat(await getAllDataSet(response['@odata.nextLink'] === undefined ? "" : response['@odata.nextLink'], client));
+        clear.forEach(elem => {
             let str_tab = elem.subject.split('-').map(arr => arr.trim());
 
             if (str_tab[0].toLowerCase() == name.toLowerCase())

@@ -4,6 +4,8 @@ const aers = require('../../config/aer.json')
 const { MessageEmbed } = require('discord.js');
 const moment = require('moment');
 
+moment.locale('fr');
+
 const serializeResponse = (response) => {
     let arr = [];
 
@@ -136,9 +138,10 @@ module.exports = {
 
         tokensFunc.retrieveTokenFromDb().then(token => {
             validation_table.forEach(name => {
-                console.log('----------------------------');
                 console.log(name);
                 calendarService.getWeekAERAvailiabityByName(token, name).then((res) => {
+                    console.log('----------------------------');
+                    console.log(res);
                     if (res.length == 0) {
                         message.channel.send(`${name} has no Event assigned this week...`);
                         return;
@@ -155,7 +158,7 @@ module.exports = {
                     console.error(err);
                     message.channel.send('The server is not running...');
                 });
-            }).catch(error => console.error(error));
-        });
+            });
+        }).catch(error => console.error(error));
     },
 };
