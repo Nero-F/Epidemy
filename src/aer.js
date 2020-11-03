@@ -22,6 +22,16 @@ const getAERNameListFromSkill = (message, skill) => {
     return nameList;
 }
 
+const getAerObjListFromKey = (key) => {
+    const objList = [];
+
+    aers.AER.forEach( aer => {
+        console.log(aer[key]);
+        objList.push(aer[key]);
+    });
+    return objList;
+}
+
 const getAERNameList = () => {
     const nameList = [];
 
@@ -50,5 +60,6 @@ const getAERNameListFromPromotion = (message, promotion) => {
 module.exports = {
     getAERNameList,
     getAERNameListFromPromotion,
-    getAERNameListFromSkill 
+    getAERNameListFromSkill,
+    getAerObjListFromKey
 };
