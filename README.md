@@ -23,6 +23,7 @@ This bot is usefull during Epimote
 - [ ] Ping on-guard AER instead of the common role
 - [ ] Search for a skill and get a list of praticants
 - [ ] Make a full wiki
+- [ ] Delete remaining file once presence done
 
 ## Config File
 
