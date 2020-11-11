@@ -1,2 +1,5 @@
 node_modules
 .env
+src/cache/*.csv
+src/discord-bot/commands/adm/attachments
+Session.vim
