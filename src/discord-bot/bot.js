@@ -13,7 +13,7 @@ for (const file of commandFiles) {
     client.commands.set(command.name, command);
 }
 for (const file of commandFilesAdm) {
-    const commandAdm = require(`./commands/${file}`);
+    const commandAdm = require(`./commands/adm/${file}`);
     client.commandsAdm.set(commandAdm.name, commandAdm);
 }
 
@@ -25,33 +25,31 @@ const prefix_admin = process.env.DISCORD_PREFIX_ADMIN;
 const SERV_ID = process.env.DISCORD_SERV_ID;
 const CHAN_ID = process.env.DISCORD_CHAN_ID;
 
-
 client.once('ready', () => console.log('Bot Is Ready'));
 client.on('message', message => {
-    if (message.guild == undefined || 
-        message.guild.id !== SERV_ID || message.channel.id !== CHAN_ID) {
-        message.author.send(`You can only call me in this specific channel ${CHAN_ID}...`);
-        return;
-    }
+    const is_in_target_chan = message.guild == undefined || message.guild.id !== SERV_ID || message.channel.id !== CHAN_ID ? false : true;
+    const is_from_aer = aerListId.find(id => id === message.author.id) == undefined ? false : true;
     msg_content = message.content;
-    
     if ((!msg_content.startsWith(prefix) && !msg_content.startsWith(prefix_admin))|| message.author.bot) return;
 
     let w_collection;
     let w_prefix = "";
 
     if (msg_content.startsWith(prefix)) {
+        if (!is_in_target_chan && !is_from_aer) {
+            message.author.send(`You can only call me in this specific channel ${CHAN_ID}...`);
+            return;
+        }
         w_prefix = prefix;
         w_collection = client.commands;
     } else {
         w_prefix = prefix_admin;
         w_collection = client.commandsAdm;
-        if (!aerListId.has(message.author.id)) {
+        if (!is_from_aer) {
             message.reply('You\'re not part of the AER\'s GVNG so you cannot access to these commands :P');
             return;
         }
     }
-    console.log(message.author);
 
     const args = msg_content.slice(w_prefix.length).trim().split(' ');
     const command = args.shift();
