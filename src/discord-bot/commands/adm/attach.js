@@ -36,7 +36,9 @@ const list_file = (message) => {
 
 module.exports = {
     name: 'attach',
-    description: 'Attach the exported from intranet, give it a name and use it make presence!',
+    usage: '[option] file_name',
+    options: '\n\t-r\t\t\t\tremove an already attached file.\n\t-l\t\t\t\tlist all available attached files.\t\nfile_name\tname given to the file in memory',
+    description: 'Attach the file exported from intranet, give it a name and use it to make presence!',
     execute(message, args) {
         const has_attachement = message.attachments.size == 1 ? true : false;
         
