@@ -11,8 +11,8 @@ const serializeResponse = (response) => {
 
     response.forEach(elem => {
         let parseID = elem.subject.split('-').map(part => { return part.trim() });
-        let start = moment(elem.start.dateTime);
-        let end = moment(elem.end.dateTime);
+        let start = moment.utc(elem.start.dateTime).local();
+        let end = moment.utc(elem.end.dateTime).local();
         arr.push({
             name: parseID[0],
             activity: parseID[1],
