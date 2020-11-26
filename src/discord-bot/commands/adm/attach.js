@@ -26,10 +26,10 @@ const rm_file = (message, name) => {
 
 const list_file = (message) => {
     const files = fs.readdirSync(attach_path);
-    const output = files.join('\n=> ');
+    const output = files.join('\n📁 ');
 
-    if (file.length > 0)
-        message.reply(`List of in memory files\n\n=> ${output}`)
+    if (files.length > 0)
+        message.reply(`List of in memory files\n\n📁 ${output}`)
     else 
         message.reply('No file in memory');
 }
@@ -45,7 +45,7 @@ module.exports = {
         if (args.length == 2 && args[0] == '-r') {
             rm_file(message, args[1]);
             return;
-        } else if (args.length == 1 && args[0] == '-l') {
+       } else if (args.length == 1 && args[0] == '-l') {
             list_file(message);
             return;
         }
