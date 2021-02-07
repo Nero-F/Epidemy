@@ -42,6 +42,7 @@ const getTimeObjFromDateTimes = (start, end) => {
     };
 }
 
+// TODO: improve this part
 const getAllDataSet = async (linkToNextSet, client) => {
     let buffer = [];
 
@@ -78,9 +79,9 @@ const getWeekAERAvailiabityByName = async (accessToken, name) => {
         let clear = response.value;
         clear = clear.concat(await getAllDataSet(response['@odata.nextLink'] === undefined ? "" : response['@odata.nextLink'], client));
         clear.forEach(elem => {
-            let str_tab = elem.subject.split('-').map(arr => arr.trim());
+            let str_tab = elem?.subject.split('-').map(arr => arr.trim());
 
-            if (str_tab[0].toLowerCase() == name.toLowerCase())
+            if (str_tab && str_tab[0].toLowerCase() == name.toLowerCase())
                 retValue.push(elem);
         });
         return retValue;
