@@ -22,12 +22,11 @@ const aerListId = getAerObjListFromKey('discordId');
 const BOT_TOKEN = process.env.BOT_TOKEN;
 const prefix = process.env.DISCORD_PREFIX;
 const prefix_admin = process.env.DISCORD_PREFIX_ADMIN;
-const SERV_ID = process.env.DISCORD_SERV_ID;
-const CHAN_ID = process.env.DISCORD_CHAN_ID;
+//const SERV_ID = process.env.DISCORD_SERV_ID;
 
 client.once('ready', () => console.log('Bot Is Ready'));
 client.on('message', message => {
-    const is_in_target_chan = message.guild == undefined || message.guild.id !== SERV_ID || message.channel.id !== CHAN_ID ? false : true;
+    //const is_in_target_serv = message.guild == undefined || message.guild.id !== SERV_ID [>|| message.channel.id !== CHAN_ID <]? false : true;
     const is_from_aer = aerListId.find(id => id === message.author.id) == undefined ? false : true;
     msg_content = message.content;
     if ((!msg_content.startsWith(prefix) && !msg_content.startsWith(prefix_admin))|| message.author.bot) return;
@@ -36,8 +35,8 @@ client.on('message', message => {
     let w_prefix = "";
 
     if (msg_content.startsWith(prefix)) {
-        if (!is_in_target_chan && !is_from_aer) {
-            message.author.send(`You can only call me in this specific channel ${CHAN_ID}...`);
+        if (message.channel.type !== 'dm' && !is_from_aer) {
+            message.reply(`You can only call me via DMs...`);
             return;
         }
         w_prefix = prefix;
