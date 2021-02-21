@@ -28,7 +28,7 @@ module.exports = {
     getAccessTokenBot,
     retrieveTokenFromDb: async () => {
         try {
-            const keys = await redis_client.keys('*');
+            const keys = await redis_client.keys('sesh*');
             const key = keys.shift();
             const tmp = await redis_client.get(key)
             const {refresh_token, access_token, expires_in}= JSON.parse(tmp).passport.user.oauthToken.token;
