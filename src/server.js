@@ -6,8 +6,7 @@ const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const session = require('express-session');
 const flash = require('connect-flash');
-
-const redis = require('redis');
+require('redis');
 const RedisStore = require('connect-redis')(session);
 
 // routers
