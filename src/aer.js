@@ -25,8 +25,7 @@ const getAERNameListFromSkill = (message, skill) => {
 const getAerObjListFromKey = (key) => {
     const objList = [];
 
-    aers.AER.forEach( aer => {
-        console.log(aer[key]);
+    aers.AER.forEach(aer => {
         objList.push(aer[key]);
     });
     return objList;
