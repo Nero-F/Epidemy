@@ -17,9 +17,11 @@ This bot is usefull during Epimote
 - [x] Get global informations about an AER
 - [x] Display AERs schedule of the week 
 - [x] List all AER of Bordeaux
+- [x] System to check students presence on activities
 
 ### Planned
-- [ ] System to check students presence on activities
+
+- [ ] Automatically update presence on the intranet
 - [ ] Ping on-guard AER instead of the common role
 - [ ] Search for a skill and get a list of praticants
 - [ ] Make a full wiki
