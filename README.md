@@ -31,12 +31,15 @@ This bot is usefull during Epimote
 
 ### Dotenv
 
-An already half filled .env.example is provided, just fill in the blank
+A .env.example is provided, just fill in the blank.
+Here are the principles variables you need to get, I've already given most of them.
 
-- APP_ID & APP_SECRET you need to register an App on azureAD (portal azure of epitech) in order to get the right to read mail calendar
-- BOT_TOKEN the token of your application (go to the discord dev portal)
-- DISCORD_SERV_ID & DISCORD_CHAN_ID I don't think I have to explain these
-- ID_AER_CALENDAR the ID of the calendar in which we retreive informations
+| VARENV | VALUE |
+|--------|-------|
+| APP_ID & APP_SECRET | Ask me I'll give you or go on azure epitech portal and create a brand application |
+|BOT_TOKEN | The token of your application (go to the discord dev portal) |
+|ID_AER_CALENDAR | The ID of the calendar in which we retreive informations |
+
 
 ### AER
 
