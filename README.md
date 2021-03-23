@@ -9,7 +9,12 @@
 </p>
 
 # Epidemy
-This bot is usefull during Epimote
+Your friendly Epimote bot
+
+## Description
+
+This bot is used to provides AERs informations to the students, such as their organizations or what skills they have.
+It is also usefull for the AERs to check students presence on pedagogical activites when their are organize on Discord.
 
 ## Features
 
@@ -21,7 +26,7 @@ This bot is usefull during Epimote
 
 ### Planned
 
-- [ ] Automatically update presence on the intranet
+- [ ] Automatically update presence directly on the intranet
 - [ ] Ping on-guard AER instead of the common role
 - [ ] Search for a skill and get a list of praticants
 - [ ] Make a full wiki
@@ -37,13 +42,20 @@ Here are the principles variables you need to get, I've already given most of th
 | VARENV | VALUE |
 |--------|-------|
 | APP_ID & APP_SECRET | Ask me I'll give you or go on azure epitech portal and create a brand application |
-|BOT_TOKEN | The token of your application (go to the discord dev portal) |
-|ID_AER_CALENDAR | The ID of the calendar in which we retreive informations |
+| BOT_TOKEN | The token of your application (go to the discord dev portal) |
+| ID_AER_CALENDAR | The ID of the calendar in which we retreive informations |
+| INTRA_AUTOLOGIN | The autologin link/token of an pedagogical member |
+| DISCORD_PREFIX | prefix that will trigger bot command| 
+| DISCORD_PREFIX_ADMIN | prefix that will trigger admin bot command| 
 
 
 ### AER
 
 If you come from another Epitech's campuses than Bordeaux, modify this file as you please. It contains all informations about the AERs. I provide an example with my own infos.
+
+## Dependencies
+
+Make sure _redis-server_ is installed.
 
 ## Installation
 
@@ -57,4 +69,4 @@ or run it locally with
 
 ## Disclaimer
 
-This bot still under development, I only developped it for fun and to practice a little bit of Node (I proposed it to the tek HUB for the occasion)
+This bot still under development, I only developped it for fun and to practice a little bit of Node
