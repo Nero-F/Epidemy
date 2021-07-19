@@ -6,3 +6,4 @@ Session.vim
 .hidden
 student_map.json
 src/config/students.json
+coverage
