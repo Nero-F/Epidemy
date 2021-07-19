@@ -1,4 +1,4 @@
-const redis_client = require('./cache/redis_cache').async_client;
+const redis_client = require('./redis_cache').async_client;
 
 const getAccessTokenBot = async (oauthToken) => {
     let storedToken = oauthToken;
