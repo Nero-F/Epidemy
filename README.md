@@ -4,7 +4,15 @@
   </a>
   <p align="center">A Discord bot to see your favorites AERs disponibilities and more</p>
   <p align="center">
-    <a href="/doc/coc.txt"><img alt="Doc" src="https://img.shields.io/badge/doc-aer!%20help-green.svg?style=flat-square"></a>
+    <a href="/doc/coc.txt">
+        <img alt="Doc" src="https://img.shields.io/badge/doc-aer!%20help-green.svg?style=flat-square">
+    </a>
+    <a href="https://codecov.io/gh/Nero-F/Epidemy">
+        <img src="https://codecov.io/gh/Nero-F/Epidemy/branch/master/graph/badge.svg?token=8QGD49UVLD"/>
+    </a>
+    <a href="https://github.com/Nero-F/Epidemy/actions/workflows/epidemy_ci-cd.yml">
+        <img src="https://github.com/Nero-F/Epidemy/actions/workflows/epidemy_ci-cd.yml/badge.svg?branch=master"/>
+    </a>
   </p>
 </p>
 

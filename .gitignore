@@ -8,3 +8,4 @@ Session.vim
 student_map.json
 src/config/students.json
 coverage
+tmp
