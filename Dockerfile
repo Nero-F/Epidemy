@@ -8,8 +8,8 @@ RUN npm install --silent
 
 COPY . ./
 
-EXPOSE 4901 
-
 ENV REDIS_HOST=redis
+
+EXPOSE 3001
 
 CMD ["npm", "start"]
