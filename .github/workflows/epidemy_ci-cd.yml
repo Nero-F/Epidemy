@@ -11,15 +11,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Start Redis
-      uses: supercharge/redis-github-action@1.2.0
-      with:
-        redis-version: 6
     - uses: actions/checkout@v2
+    - name: Cache node_modules
+      id: cache-node-modules
+      uses: actions/cache@v2
+      with:
+        path: node_modules
+        key: node-modules-${{ hashFiles('package-lock.json') }}
     - name: install deps
       run: |
         cp student_map.example.json student_map.json
         npm ci
+  test:
+    - name: Start Redis
+      uses: supercharge/redis-github-action@1.2.0
+      with:
+        redis-version: 6
+    - name: Restore node_modules
+      id: cache-node-modules
+      uses: actions/cache@v2
+      with:
+        path: node_modules
+        key: node-modules-${{ hashFiles('package-lock.json') }}
     - name: running tests
       run: |
         npm test
