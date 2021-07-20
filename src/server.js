@@ -81,7 +81,7 @@ passport.use(new OIDCStrategy(
       signInComplete
 ));
 
-const redis_client = require('./cache/redis_cache').client;
+const redis_client = require('./redis_cache').client;
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
