@@ -1,10 +1,22 @@
 version: '3'
 services:
   node:
+    env_file: .docker-compose.env
     build: .  
-    ports:
-     - "4901:4901"
+    #ports:
+    #- "3001:3001"
     links:
-     - redis:redis
+      - redis:redis
+    environment:
+      - VIRTUAL_HOST=$VIRTUAL_HOST
+      - VIRTUAL_PORT=$VIRTUAL_PORT
+    networks:
+      - server_nginx_reverse_proxy_intern-net
   redis:
     image: "redis:alpine"
+    networks:
+      - server_nginx_reverse_proxy_intern-net
+
+networks:
+  server_nginx_reverse_proxy_intern-net:
+    external: true
