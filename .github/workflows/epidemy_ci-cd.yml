@@ -26,3 +26,9 @@ jobs:
         cp student_map.example.json student_map.json
       env:
         CI: true
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v2
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        fail_ci_if_error: true
+        verbose: true
