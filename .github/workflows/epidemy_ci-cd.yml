@@ -23,6 +23,7 @@ jobs:
         cp student_map.example.json student_map.json
         npm ci
   test:
+    - uses: actions/checkout@v2
     - name: Start Redis
       uses: supercharge/redis-github-action@1.2.0
       with:
