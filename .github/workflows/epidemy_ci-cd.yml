@@ -13,10 +13,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: install deps
-    - run: |
+      run: |
         cp student-map.example.json student_map.json
         npm ci
     - name: running tests
-    - run: |
+      run: |
         npm test
         cp student-map.example.json student_map.json
