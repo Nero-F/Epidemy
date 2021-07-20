@@ -9,7 +9,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
     - name: Cache node_modules
@@ -22,7 +21,10 @@ jobs:
       run: |
         cp student_map.example.json student_map.json
         npm ci
-  test:
+  unit-test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
     - uses: actions/checkout@v2
     - name: Start Redis
       uses: supercharge/redis-github-action@1.2.0
