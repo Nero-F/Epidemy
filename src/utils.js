@@ -1,11 +1,8 @@
-const studMap = require('../student_map.json');
-const path = require('path');
 const {async_client} = require('./redis_cache');
 const fs = require('fs');
 
 const checkPresence = async (ids, attachedFile) => {
     let toFormat = "login;Présent\n";
-    console.log(studMap);
 
     const data = fs.readFileSync(attachedFile, 'UTF-8');
     const lines = data.split("\n");
