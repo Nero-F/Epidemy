@@ -3,7 +3,7 @@ const redis = require('redis');
 const async_redis = require('async-redis');
 const client = redis.createClient(process.env.REDIS_PORT, process.env.REDIS_HOST);
 const async_client = async_redis.createClient(process.env.REDIS_PORT, process.env.REDIS_HOST);
-const student_map = require('../student_map.json');
+const student_map =  process.env.NODE_ENV !== 'CI' ? require('../student_map.json') : require('../student_map.example.json');
 
 async_client.on('error', (error) => {
     console.error(error);
