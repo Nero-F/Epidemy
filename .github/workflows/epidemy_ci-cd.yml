@@ -19,7 +19,6 @@ jobs:
         key: node-modules-${{ hashFiles('package-lock.json') }}
     - name: install deps
       run: |
-        cp student_map.example.json student_map.json
         npm ci
   unit-test:
     needs: build
@@ -38,8 +37,8 @@ jobs:
         key: node-modules-${{ hashFiles('package-lock.json') }}
     - name: running tests
       run: |
-        npm test
         cp student_map.example.json student_map.json
+        npm test
       env:
         CI: true
     - name: Upload coverage to Codecov
