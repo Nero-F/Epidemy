@@ -11,6 +11,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Start Redis
+      uses: supercharge/redis-github-action@1.2.0
+      with:
+        redis-version: 6
     - uses: actions/checkout@v2
     - name: install deps
       run: |
@@ -20,3 +24,5 @@ jobs:
       run: |
         npm test
         cp student_map.example.json student_map.json
+      env:
+        CI: true
