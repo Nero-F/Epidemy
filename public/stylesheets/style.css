@@ -1,7 +1,56 @@
-body {
-  padding-top: 4.5rem;
+/* @import url("../../rsrcs/fonts/stylesheet.css"); */
+
+@font-face {
+    font-family: 'Basier Circle';
+    src: url('BasierCircle-Bold.eot');
+    src: local('Basier Circle Bold'), local('BasierCircle-Bold'),
+        url('BasierCircle-Bold.eot?#iefix') format('embedded-opentype'),
+        url('BasierCircle-Bold.woff2') format('woff2'),
+        url('BasierCircle-Bold.woff') format('woff'),
+        url('BasierCircle-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
 }
 
+body {
+  padding-top: 4.5rem;
+  background-color: #111111;
+}
+
+.navbar {
+    margin: 16px;
+    background: rgba(29,29,29,.9);
+    border-radius: 100px;
+}
+
+.navbar-brand {
+    width: 16vw;
+    height: 6vh;
+    filter: invert(52%) sepia(95%) saturate(1549%) hue-rotate(155deg) brightness(88%) contrast(101%);
+}
+
+.oue {
+    margin-top: 100px;
+    color: white;
+    background-color: rgba(255,255,255,.05);
+    display: flex;
+    justify-content: center;
+}
+h1 {
+    top: 100px;
+    font-family: 'Helvetica';
+    font-weight: bold;
+    font-style: normal;
+}
+
+b {
+    font-family: 'Helvetica';
+    color: #00A7D8;
+}
+
+p {
+    color: rgba(255,255,255,0.4)
+}
 .alert-pre {
   word-wrap: break-word;
   word-break: break-all;
