@@ -50,10 +50,10 @@ jobs:
   deployments:
     needs: unit-test
     runs-on: ubuntu-latest
+    environment:
+      name: epidemy-prod
     steps:
       - name: executing remote ssh commands using ssh key
-        environment:
-          name: epidemy-prod
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
