@@ -82,7 +82,7 @@ passport.use(new OIDCStrategy(
       signInComplete
 ));
 
-const redis_client = require('./cache/redis_cache').client;
+const redis_client = require('./redis_cache').client;
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
@@ -127,6 +127,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(express.static('rsrcs'))
+app.use(express.static('rsrcs/fonts'))
 
 app.use((req, res, next) => {
     if (req.user) {

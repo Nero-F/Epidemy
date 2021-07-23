@@ -10,7 +10,7 @@ module.exports = {
   deploy : {
     production : {
       user : 'nero_f',
-      host : '152.228.134.62',
+      host : '34.107.103.52',
       ref  : 'origin/master',
       repo : 'git@github.com:Nero-F/Epidemy.git',
       path : '/var/www/Epidemy',

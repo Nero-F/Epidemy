@@ -5,7 +5,7 @@
             "students": [
                 {
                     "pseudo": "John Doe",
-                    "id": "198149735004110849", // => discord ID
+                    "id": "198149735004110849",
                     "mail": "john.doe@epitech.eu"
                 }
             ]

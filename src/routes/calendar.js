@@ -1,14 +1,8 @@
-// Copyright (c) Microsoft Corporation.
-// Licensed under the MIT License.
-
 const express = require('express');
 const router = express.Router();
 const tokens = require('../tokens.js');
 const graph = require('../graph.js');
 const util = require('util');
-
-/* GET /calendar */
-// <GetRouteSnippet>
 
 router.get('/', async (req, res) => {
     if (!req.isAuthenticated())
