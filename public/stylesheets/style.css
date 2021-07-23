@@ -20,7 +20,6 @@ body {
 .navbar {
     margin: 16px;
     background: rgba(29,29,29,.9);
-    border-radius: 100px;
 }
 
 .navbar-brand {
@@ -30,12 +29,25 @@ body {
 }
 
 .oue {
-    margin-top: 100px;
+    margin-top: 50px;
+    margin-bottom: 100px;
     color: white;
     background-color: rgba(255,255,255,.05);
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    border-radius: 10px;
 }
+
+.oue h1, h4, p {
+    align-self: center;
+}
+
+.animContainer {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+
 h1 {
     top: 100px;
     font-family: 'Helvetica';
