@@ -1,0 +1,192 @@
+@font-face {
+    font-family: 'Basier Circle';
+    src: url('BasierCircle-BoldItalic.eot');
+    src: local('Basier Circle Bold Italic'), local('BasierCircle-BoldItalic'),
+        url('BasierCircle-BoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('BasierCircle-BoldItalic.woff2') format('woff2'),
+        url('BasierCircle-BoldItalic.woff') format('woff'),
+        url('BasierCircle-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Basier Circle';
+    src: url('BasierCircle-Bold.eot');
+    src: local('Basier Circle Bold'), local('BasierCircle-Bold'),
+        url('BasierCircle-Bold.eot?#iefix') format('embedded-opentype'),
+        url('BasierCircle-Bold.woff2') format('woff2'),
+        url('BasierCircle-Bold.woff') format('woff'),
+        url('BasierCircle-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Basier Circle';
+    src: url('BasierCircle-MediumItalic.eot');
+    src: local('Basier Circle Medium Itali'), local('BasierCircle-MediumItalic'),
+        url('BasierCircle-MediumItalic.eot?#iefix') format('embedded-opentype'),
+        url('BasierCircle-MediumItalic.woff2') format('woff2'),
+        url('BasierCircle-MediumItalic.woff') format('woff'),
+        url('BasierCircle-MediumItalic.ttf') format('truetype');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Basier Square';
+    src: url('BasierSquare-SemiBoldItalic.eot');
+    src: local('Basier Square SemiBold Ita'), local('BasierSquare-SemiBoldItalic'),
+        url('BasierSquare-SemiBoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('BasierSquare-SemiBoldItalic.woff2') format('woff2'),
+        url('BasierSquare-SemiBoldItalic.woff') format('woff'),
+        url('BasierSquare-SemiBoldItalic.ttf') format('truetype');
+    font-weight: 600;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Basier Circle';
+    src: url('BasierCircle-Italic.eot');
+    src: local('Basier Circle Italic'), local('BasierCircle-Italic'),
+        url('BasierCircle-Italic.eot?#iefix') format('embedded-opentype'),
+        url('BasierCircle-Italic.woff2') format('woff2'),
+        url('BasierCircle-Italic.woff') format('woff'),
+        url('BasierCircle-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Basier Square';
+    src: url('BasierSquare-MediumItalic.eot');
+    src: local('Basier Square Medium Itali'), local('BasierSquare-MediumItalic'),
+        url('BasierSquare-MediumItalic.eot?#iefix') format('embedded-opentype'),
+        url('BasierSquare-MediumItalic.woff2') format('woff2'),
+        url('BasierSquare-MediumItalic.woff') format('woff'),
+        url('BasierSquare-MediumItalic.ttf') format('truetype');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Basier Circle';
+    src: url('BasierCircle-SemiBold.eot');
+    src: local('Basier Circle SemiBold'), local('BasierCircle-SemiBold'),
+        url('BasierCircle-SemiBold.eot?#iefix') format('embedded-opentype'),
+        url('BasierCircle-SemiBold.woff2') format('woff2'),
+        url('BasierCircle-SemiBold.woff') format('woff'),
+        url('BasierCircle-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Basier Circle';
+    src: url('BasierCircle-Medium.eot');
+    src: local('Basier Circle Medium'), local('BasierCircle-Medium'),
+        url('BasierCircle-Medium.eot?#iefix') format('embedded-opentype'),
+        url('BasierCircle-Medium.woff2') format('woff2'),
+        url('BasierCircle-Medium.woff') format('woff'),
+        url('BasierCircle-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Basier Circle';
+    src: url('BasierCircle-Regular.eot');
+    src: local('Basier Circle Regular'), local('BasierCircle-Regular'),
+        url('BasierCircle-Regular.eot?#iefix') format('embedded-opentype'),
+        url('BasierCircle-Regular.woff2') format('woff2'),
+        url('BasierCircle-Regular.woff') format('woff'),
+        url('BasierCircle-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Basier Circle';
+    src: url('BasierCircle-SemiBoldItalic.eot');
+    src: local('Basier Circle SemiBold Ita'), local('BasierCircle-SemiBoldItalic'),
+        url('BasierCircle-SemiBoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('BasierCircle-SemiBoldItalic.woff2') format('woff2'),
+        url('BasierCircle-SemiBoldItalic.woff') format('woff'),
+        url('BasierCircle-SemiBoldItalic.ttf') format('truetype');
+    font-weight: 600;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Basier Square';
+    src: url('BasierSquare-SemiBold.eot');
+    src: local('Basier Square SemiBold'), local('BasierSquare-SemiBold'),
+        url('BasierSquare-SemiBold.eot?#iefix') format('embedded-opentype'),
+        url('BasierSquare-SemiBold.woff2') format('woff2'),
+        url('BasierSquare-SemiBold.woff') format('woff'),
+        url('BasierSquare-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Basier Square';
+    src: url('BasierSquare-Medium.eot');
+    src: local('Basier Square Medium'), local('BasierSquare-Medium'),
+        url('BasierSquare-Medium.eot?#iefix') format('embedded-opentype'),
+        url('BasierSquare-Medium.woff2') format('woff2'),
+        url('BasierSquare-Medium.woff') format('woff'),
+        url('BasierSquare-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Basier Square';
+    src: url('BasierSquare-BoldItalic.eot');
+    src: local('Basier Square Bold Italic'), local('BasierSquare-BoldItalic'),
+        url('BasierSquare-BoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('BasierSquare-BoldItalic.woff2') format('woff2'),
+        url('BasierSquare-BoldItalic.woff') format('woff'),
+        url('BasierSquare-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Basier Square';
+    src: url('BasierSquare-Italic.eot');
+    src: local('Basier Square Italic'), local('BasierSquare-Italic'),
+        url('BasierSquare-Italic.eot?#iefix') format('embedded-opentype'),
+        url('BasierSquare-Italic.woff2') format('woff2'),
+        url('BasierSquare-Italic.woff') format('woff'),
+        url('BasierSquare-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Basier Square';
+    src: url('BasierSquare-Regular.eot');
+    src: local('Basier Square Regular'), local('BasierSquare-Regular'),
+        url('BasierSquare-Regular.eot?#iefix') format('embedded-opentype'),
+        url('BasierSquare-Regular.woff2') format('woff2'),
+        url('BasierSquare-Regular.woff') format('woff'),
+        url('BasierSquare-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Basier Square';
+    src: url('BasierSquare-Bold.eot');
+    src: local('Basier Square Bold'), local('BasierSquare-Bold'),
+        url('BasierSquare-Bold.eot?#iefix') format('embedded-opentype'),
+        url('BasierSquare-Bold.woff2') format('woff2'),
+        url('BasierSquare-Bold.woff') format('woff'),
+        url('BasierSquare-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
