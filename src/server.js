@@ -30,7 +30,8 @@ passport.deserializeUser(async (user, done) => {
 });
 
 const PORT = process.env.SERV_PORT;
-const OAUTH_REDIRECT_URI = `http://localhost:${PORT}/auth/callback`;
+const HOST = process.env.VIRTUAL_HOST ?? `localhost:${PORT}`;
+const OAUTH_REDIRECT_URI = `https://${HOST}/auth/callback`;
 
 const configuration = {
     client: {
@@ -160,4 +161,4 @@ app.use((err, req, res, next) => {
 
 const discord_client = require('./discord-bot/bot');
 
-app.listen(PORT, () => console.log(`Listening on http://localhost:${PORT} !!`));
+app.listen(PORT, '0.0.0.0',() => console.log(`Listening on http://${HOST} !!`));
