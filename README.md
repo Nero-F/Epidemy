@@ -25,6 +25,8 @@ Your friendly Epimote bot
 This bot is used to provides AERs informations to the students, such as their organizations or what skills they have.
 It is also usefull for the AERs to check students presence on pedagogical activites when their are organize on Discord.
 
+##### The name is a reference of the recents COVID events that led France to be confined and thus forced us to give pedagogical activities in full remote and also because the school is Epitech ;) 
+
 ## Features
 
 ### Done
@@ -78,6 +80,12 @@ or run it locally with
 
 ```$ npm install && npm start ```
 
+## Some screenshots of actual features
+
+![week-avail](rsrcs/week-avail.png)
+![adm-help](rsrcs/adm-help.png)
+![info-cmd](rsrcs/info-cmd.png)
+
 ## Disclaimer
 
-This bot still under development, I only developped it for fun and to practice a little bit of Node
+This bot still under development, I only code it for fun, to practice a little bit of Node and to help my comrades at school.
